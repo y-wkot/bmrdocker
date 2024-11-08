@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController // BmrControllerクラスはRESTAPIコントローラー RESTAPIを提供するクラス
 @RequestMapping("/api") // URLパス クライアントのリクエストを処理
-@CrossOrigin(origins = "http://localhost:5173") // フロントエンドのURLを指定
+@CrossOrigin(origins = "https://bmrfront.onrender.com") // フロントエンドのURLを指定
 public class BmrController {
 
     // リクエストを受け取るBmrRequestクラスと、結果を返すBmrResultクラスを作る
