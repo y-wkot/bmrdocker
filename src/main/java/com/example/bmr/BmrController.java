@@ -23,8 +23,12 @@ public class BmrController {
             bmr = (13.397 * request.getWeight()) + (4.799 * request.getHeight()) - (5.677 * request.getAge() + 88.362);
         } else {
             // 女性版計算式
-            bmr = (9.247 * request.getWeight()) + (3.098 * request.getHeight() - 4.33) * (request.getAge() + 447.593);
+            bmr = (9.247 * request.getWeight()) + (3.098 * request.getHeight()) - (4.33 * request.getAge()) + 447.593;
         }
+
+        // 運動強度を倍率として適用
+        bmr *= request.getExerciseIntensity(); // 運動強度を最後にかける
+
         return new BmrResult(bmr);
     }
 }
