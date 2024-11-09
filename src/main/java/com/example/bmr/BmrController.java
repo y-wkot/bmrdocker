@@ -25,6 +25,10 @@ public class BmrController {
             // 女性版計算式
             bmr = (9.247 * request.getWeight()) + (3.098 * request.getHeight()) - (4.33 * request.getAge()) + 447.593;
         }
+
+        // 運動強度を倍率として適用
+        bmr *= request.getExerciseIntensity(); // 運動強度を最後にかける
+
         return new BmrResult(bmr);
     }
 }

@@ -5,6 +5,7 @@ public class BmrRequest {
     private int age; // 年齢
     private double height; // 身長cm
     private double weight; // 体重kg
+    private double exerciseIntensity; // 新規追加
 
     public String getGender() { // ゲッターメソッドgenderフィールドの値を取得し、String型で戻す。genderが文字列で保存。publicアクセス修飾子により他クラスからもアクセス可
         return gender; // 値を返す
@@ -37,5 +38,13 @@ public class BmrRequest {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public double getExerciseIntensity() {
+        return exerciseIntensity;
+    }
+
+    public void setExerciseIntensity(double exerciseIntensity) {
+        this.exerciseIntensity = exerciseIntensity;
     }
 }
