@@ -20,10 +20,10 @@ public class BmrController {
 
         if (request.getGender().equals("man")) { // 男だったらでのif文
             // 男性版計算式
-            bmr = (13.397 * request.getWeight()) + (4.799 * request.getHeight()) - (5.677 * request.getAge() + 88.362);
+            bmr = (13.397 * request.getWeight()) + (4.799 * request.getHeight()) - (5.677 * request.getAge()) + 88.362;
         } else {
             // 女性版計算式
-            bmr = (9.247 * request.getWeight()) + (3.098 * request.getHeight() - 4.33) * (request.getAge() + 447.593);
+            bmr = (9.247 * request.getWeight()) + (3.098 * request.getHeight()) - (4.33 * request.getAge()) + 447.593;
         }
         return new BmrResult(bmr);
     }
