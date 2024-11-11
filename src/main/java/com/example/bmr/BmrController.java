@@ -1,7 +1,10 @@
 // JavaでAPIエンドポイントを作成
 package com.example.bmr;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,11 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController // BmrControllerクラスはRESTAPIコントローラー RESTAPIを提供するクラス
 @RequestMapping("/api") // URLパス クライアントのリクエストを処理
-@CrossOrigin(origins = "https://bmrfront.onrender.com") // フロントエンドのURLを指定
+@CrossOrigin(origins = { "http://localhost:5173", "https://bmrfront.onrender.com" }) // フロントエンドのURLを指定、ローカルとRender両方を書いて動作確認にも対応
 public class BmrController {
 
-    // リクエストを受け取るBmrRequestクラスと、結果を返すBmrResultクラスを作る
+    // アクセスカウンター
+    private AtomicInteger accessCount = new AtomicInteger(0);
 
+    @GetMapping("/access-count")
+    public int getAccessCount() {
+        return accessCount.incrementAndGet(); // アクセスがあるたびにカウントを増加
+    }
+
+    // リクエストを受け取るBmrRequestクラスと、結果を返すBmrResultクラスを作る
     @PostMapping("/calculate") // PostMappingメソッドはPOSTリクエストを受け取ったときに動作
     public BmrResult calculateBmr(@RequestBody BmrRequest request) {
         double bmr;
